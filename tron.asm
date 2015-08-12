@@ -1,3 +1,21 @@
+;;--- CODE START ---;;
+    .inesprg 1
+    .inesmap 0
+    .inesmir 1
+    .ineschr 1
+
+    .bank 1
+    .org $FFFA
+    .dw 0        ; no VBlank
+    .dw Start    ; address to execute on reset
+    .dw 0        ; no whatever
+    .bank 0
+    .org $0000
+
+
+;; What follows will be useful to make sure the cycle follows the grid
+
+
     .org $0300 ; OAM Copy location $0300
 ;; THE FIRST TWO SPRITES REPRESENT THE MOTORBIKES
 Sprite1_Y:     .db  0   ; sprite #1's Y value
@@ -373,4 +391,8 @@ ourMap3:
     .db 3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4
 
 
+    .bank 2
+    .org $0000
+    .incbin "bkg.nes"
+    .incbin "sprites.nes"
 ;;--- END OF CODE FILE ---;
