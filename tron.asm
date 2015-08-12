@@ -229,30 +229,38 @@ modulo:
 ;; Kind of "function" in assembly style, used to relieve the main loop
 move_charac1:
     lda Sprite1_Y ; load A with Y position
+	sec
     sbc speed1_Up  ; subtract 1 from A. Only can do math on A register. SBC (Subtract with Borrow)
     sta Sprite1_Y; store back to memory
     lda Sprite1_Y
+	clc
     adc speed1_Down  ; add 1 to A. ADC (Add with Carry)((to A register))
     sta Sprite1_Y
     lda Sprite1_X
-    sbc speed1_Left
+    sec
+	sbc speed1_Left
     sta Sprite1_X
     lda Sprite1_X
-    adc speed1_Right
+    clc
+	adc speed1_Right
     sta Sprite1_X
     rts
     
 move_charac2:
     lda Sprite2_Y ; load A with Y position
+	sec
     sbc speed2_Up  ; subtract 1 from A. Only can do math on A register. SBC (Subtract with Borrow)
     sta Sprite2_Y; store back to memory
     lda Sprite2_Y
-    adc speed2_Down  ; add 1 to A. ADC (Add with Carry)((to A register))
+    clc
+	adc speed2_Down  ; add 1 to A. ADC (Add with Carry)((to A register))
     sta Sprite2_Y
     lda Sprite2_X
+	sec
     sbc speed2_Left
     sta Sprite2_X
     lda Sprite2_X
+	clc
     adc speed2_Right
     sta Sprite2_X
     rts
